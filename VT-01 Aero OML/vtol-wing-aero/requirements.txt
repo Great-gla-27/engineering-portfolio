@@ -1,0 +1,6 @@
+aerosandbox==4.2.10
+neuralfoil==0.3.3
+numpy
+scipy
+shapely
+matplotlib

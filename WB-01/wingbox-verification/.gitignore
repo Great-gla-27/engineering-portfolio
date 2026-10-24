@@ -1,0 +1,10 @@
+runs/
+__pycache__/
+*.frd
+*.dat
+*.sta
+*.cvg
+*.12d
+spooles.out
+.DS_Store
+.vscode/
