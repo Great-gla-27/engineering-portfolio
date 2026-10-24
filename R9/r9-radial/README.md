@@ -1,6 +1,6 @@
 # R9: nine-cylinder radial crank train
 
-A single-row, nine-cylinder radial crank train modelled in Fusion as a working mechanism and checked against the closed-form kinematics. Fusion document: Engineering Portfolio / R9 Engine Assembly. Design notes: `docs/R9-DN-001_design_notes.html`, revision A.
+A single-row, nine-cylinder radial crank train modelled in Fusion as a working mechanism and checked against the closed-form kinematics. Fusion document: Engineering Portfolio / R9 Engine Assembly. Design notes: `docs/R9-DN-001_design_notes.pdf`, revision A.
 
 150 x 170 mm bore and stroke, 27.04 L, 6.8:1, master rod 380 mm, eight link rods of 300 mm on individually tuned knuckle pins. The specification was set for the exercise, not taken from a source.
 

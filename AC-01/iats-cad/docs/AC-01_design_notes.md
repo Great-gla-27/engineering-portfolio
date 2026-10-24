@@ -10,113 +10,111 @@ Origin at the nose tip. x aft, y to starboard, z up, z = 0 on the fuselage keel 
 
 ## 2. Parameters
 
-Status: **source** taken as written from a team file; **resolved** sources disagree, the choice is in section 3; **derived** computed from other rows; **AC-01** not defined in the team work and chosen for this model.
-
-| Parameter | Value | Unit | Source | Status | Note |
-|---|---|---|---|---|---|
-| MTOW | 7000 | kg | Calculations/IATS_Wing_Flap_Parameters.txt L9; Group_14_Report.pdf p6 Table 2 | source | Maximum take-off mass |
-| PayloadMass | 1380 | kg | Group_14_Report.pdf p7 Table 3 | resolved | Crew + passengers + cargo; C-5 (1250 kg in Table 2 rejected) |
-| PaxMass | 100 | kg | Group_14_Report.pdf p7 s3.1 "12 passengers at 100 kg each" | source | Mass per passenger |
-| PaxCount | 12 | - | Group_14_Report.pdf p7 s3.1 | source | Passengers |
-| CrewMass | 160 | kg | Group Stuff/Mass statement.pdf row 7.1 | source | Two flight crew |
-| LH2FuelMass | 240 | kg | Group_14_Report.pdf p7 s3.3, p29 Table 10 | resolved | C-9 (130 kg in the mass statement superseded, as the report says) |
-| XcgStated | 9.32 | m | Group_14_Report.pdf p7 Table 3; Group Stuff/Mass statement.pdf totals; All Scripts I have/initial_sizing.m L46 | source | Stated CG at MTOW, the value the model is checked against |
-| XLH2Tank | 14.5 | m | Group_14_Report.pdf p7 s3.1, p8 s3.4.2 | source | LH2 tank centroid |
-| WingSpan | 23.96 | m | Calculations/IATS_Wing_Flap_Parameters.txt L20; Group_14_Report.pdf p11 s4.1.2 | resolved | C-1 (25.36 m on p5 rejected) |
-| WingArea | 73.6 | m^2 | Calculations/IATS_Wing_Flap_Parameters.txt L21; Group_14_Report.pdf p11 | source | Reference area, trapezoidal planform to the centreline |
-| AspectRatio | 7.8 | - | Calculations/IATS_Wing_Flap_Parameters.txt L22 | source | Check: b^2/S = 7.80 |
-| TaperRatio | 0.5 | - | Calculations/IATS_Wing_Flap_Parameters.txt L23; Group_14_Report.pdf p11 | resolved | C-2 (0.6 in initial_sizing.m L28 is stale) |
-| RootChord | 4.096 | m | derived: 2S/(b(1+taper)) | derived | Source rounds to 4.09 m (Calculations/IATS_Wing_Flap_Parameters.txt L24) |
-| TipChord | 2.048 | m | derived: taper x root chord | derived | Source rounds to 2.045 m (Calculations/IATS_Wing_Flap_Parameters.txt L25) |
-| LESweep | 0.0 | deg | Calculations/IATS_Wing_Flap_Parameters.txt L27 | source | Unswept leading edge |
-| Dihedral | -2.0 | deg | Calculations/IATS_Wing_Flap_Parameters.txt L30; Group_14_Report.pdf p11 "2 deg anhedral" | source | Anhedral |
-| RootAerofoil | NACA 4412 | - | Calculations/IATS_Wing_Flap_Parameters.txt L28 | source |  |
-| TipAerofoil | NACA 23012 | - | Calculations/IATS_Wing_Flap_Parameters.txt L29 | source |  |
-| WingIncidence | 1.34 | deg | Calculations/IATS_Wing_Flap_Parameters.txt L45 (wing alpha at cruise CL 0.373) | AC-01 | A-1: fuselage level in cruise |
-| WingRootLEx | 8.5 | m | All Scripts I have/initial_sizing.m L51 ("x_MAC = 8.5, estimated") | source | Unswept LE, so the MAC leading edge is at the same x |
-| FlapInboard | 0.05 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L55 | source | Single-slotted flap |
-| FlapOutboard | 0.7 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L56 | source |  |
-| FlapChordRatio | 0.3 | - | Calculations/IATS_Wing_Flap_Parameters.txt L58 | source |  |
-| SlatInboard | 0.0 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L71 | source |  |
-| SlatOutboard | 0.75 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L72 | source |  |
-| SlatChordRatio | 0.15 | - | Calculations/IATS_Wing_Flap_Parameters.txt L74 | source |  |
-| AileronInboard | 0.7 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L84 | source |  |
-| AileronOutboard | 0.95 | semi-span | Calculations/IATS_Wing_Flap_Parameters.txt L85 | source |  |
-| AileronChordRatio | 0.2 | - | Calculations/IATS_Wing_Flap_Parameters.txt L87 | source |  |
-| HTArea | 6.7 | m^2 | Calculations/tail_design_summary.txt L4; Group_14_Report.pdf p16 Table 5 | source |  |
-| HTSpan | 5.49 | m | Calculations/tail_design_summary.txt L5 | source |  |
-| HTRootChord | 1.81 | m | Calculations/tail_design_summary.txt L6 | source |  |
-| HTTipChord | 0.63 | m | Calculations/tail_design_summary.txt L7 | source |  |
-| HTTipLEOffset | 0.3 | m | All Scripts I have/plot_tail_geometry.m L23 | source | Tip LE aft of root LE, as drawn in the team tail figure |
-| VTArea | 13.14 | m^2 | Calculations/tail_design_summary.txt L13 | source |  |
-| VTHeight | 4.59 | m | Calculations/tail_design_summary.txt L14 | source |  |
-| VTRootChord | 4.25 | m | Calculations/tail_design_summary.txt L15 | source |  |
-| VTTipChord | 1.49 | m | Calculations/tail_design_summary.txt L16 | source |  |
-| VTTipLEOffset | 1.5 | m | All Scripts I have/plot_tail_geometry.m L67 | source | Fin tip LE aft of root LE |
-| TailAerofoil | NACA 0012 | - | Calculations/polar_0012_stall.txt (only symmetric section in the team polars) | AC-01 | A-2 |
-| VH | 0.26 | - | Calculations/tail_design_summary.txt L10; Group_14_Report.pdf p16 | resolved | C-4 (0.40 in tail_sizing.m L14, 0.62 in Project Bank rejected) |
-| VV | 0.06 | - | Calculations/tail_design_summary.txt L19 | source |  |
-| TailArmAssumed | 8.67 | m | All Scripts I have/initial_tail_sizing.m L62 (0.49 x 17.7 m) | source | Statistical tail arm used by the tail sizing |
-| LiftSlopeWing | 4.5 | /rad | All Scripts I have/initial_tail_sizing.m L118 | source | Course-supplied |
-| LiftSlopeTail | 3.0 | /rad | All Scripts I have/initial_tail_sizing.m L119 | source | Course-supplied |
-| NPWingBody | 0.25 | MAC | All Scripts I have/initial_tail_sizing.m L120 | source | Wing-body neutral point |
-| Downwash | 0.3 | - | All Scripts I have/initial_tail_sizing.m L121 | source | d(epsilon)/d(alpha) |
-| NPStated | 0.3713 | MAC | Calculations/tail_design_summary.txt L22 | source |  |
-| CGStated | 0.2699 | MAC | Calculations/tail_design_summary.txt L23 | source |  |
-| SMStated | 0.1015 | MAC | Calculations/tail_design_summary.txt L24 | source |  |
-| FuselageLength | 18.69 | m | Group_14_Report.pdf p5 Fig 2 | resolved | C-3 (17.7 m in tail sizing is the concept-summary value) |
-| CabinLength | 7.1 | m | Group_14_Report.pdf p8 s3.2 | source |  |
-| SeatBlockLength | 5.75 | m | Group_14_Report.pdf p8 s3.2 | source | Length occupied by seats |
-| XPax | 8.0 | m | Group Stuff/Mass statement.pdf row 7.3; Group_14_Report.pdf p7 Table 3 (payload) | source | Passenger centroid; sets the seat rows |
-| XCrew | 1.5 | m | Group Stuff/Mass statement.pdf row 7.1 | source |  |
-| FuselageWidth | 2.2 | m | scaled from Group_14_Report.pdf p5 Fig 2 front view | AC-01 | A-3 |
-| FuselageDepth | 2.4 | m | scaled from Group_14_Report.pdf p5 Fig 2 side view | AC-01 | A-3 |
-| NoseLength | 3.0 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3: nose tip to start of constant section |
-| TailConeStart | 10.7 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3: underside starts to rise |
-| TailKinkX | 15.6 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3: gentle upsweep ends, steep upsweep begins |
-| TailKinkBottom | 0.47 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3: underside height at the kink |
-| TailKinkWidth | 1.8 | m | none (no plan view in the report) | AC-01 | A-3 |
-| TailEndBottom | 2.03 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3: underside height at the tail end |
-| NoseTipZ | 0.58 | m | scaled from Group_14_Report.pdf p5 Fig 2 | AC-01 | A-3 |
-| CabinStartX | 4.4 | m | derived: centred on XPax | AC-01 | A-4 |
-| PropDiameter | 3.0 | m | Group_14_Report.pdf p5, p14, p18 Table 7 | source |  |
-| PropBlades | 5 | - | Group_14_Report.pdf p14 s4.2.1 | source | Tractor, wing-mounted |
-| PropRPM | 1400 | rpm | Group_14_Report.pdf p14 | source |  |
-| BladeTwist02 | 38 | deg | Group_14_Report.pdf p15 s4.2.2 | source | Blade angle at 0.2 R |
-| BladeTwist05 | 24 | deg | Group_14_Report.pdf p15 | source | at 0.5 R |
-| BladeTwist075 | 17 | deg | Group_14_Report.pdf p15 | source | at 0.75 R |
-| BladeTwist09 | 11 | deg | Group_14_Report.pdf p15 | source | at 0.9 R |
-| BladeAerofoils | NACA 4415 / 4412 / 0010 | - | Group_14_Report.pdf p15 s4.2.3 | source | Root / mid / tip |
-| BladeRootChord | 0.22 | m | none | AC-01 | A-5 |
-| BladeTipChord | 0.1 | m | none | AC-01 | A-5 |
-| SpinnerRadius | 0.3 | m | none | AC-01 | A-5 |
-| NacelleRadius | 0.45 | m | none | AC-01 | A-5 |
-| NacelleDrop | 0.4 | m | none | AC-01 | A-5: nacelle axis below the local wing chord line |
-| WingChordZ | 2.45 | m | none | AC-01 | A-3: root chord line height, wing sits on the fuselage crown |
-| NacelleY | 4.5 | m | Group Stuff/Mass statement.pdf row 4.1 (ycg 4.5) | source | Nacelle centreline from the aircraft centreline |
-| XMotor | 6.5 | m | Group Stuff/Mass statement.pdf row 4.1 | source | EPU centroid |
-| PropPlaneAheadOfMotor | 0.9 | m | none | AC-01 | A-5 |
-| MotorMass | 412 | kg | Group_14_Report.pdf p29 Table 10 | resolved | C-9 (400 kg + 435 kg inverters in the mass statement superseded) |
-| FuelCellMass | 800 | kg | Group_14_Report.pdf p29 Table 10 | resolved | C-9 (560 kg in the mass statement) |
-| XFuelCell | 8.0 | m | Group Stuff/Mass statement.pdf row 4.2 | source | Under the cabin floor (zcg 0.3) |
-| BatteryMass | 567 | kg | Group_14_Report.pdf p29 Table 10 | resolved | C-9 (200 kg in the mass statement) |
-| XBattery | 6.3 | m | Group Stuff/Mass statement.pdf row 7.11 | source |  |
-| LH2TankSystemMass | 686 | kg | Group_14_Report.pdf p29 Table 10 (incl. 240 kg fuel) | resolved | C-9 |
-| LH2Density | 70.8 | kg/m^3 | standard value at the normal boiling point | AC-01 | A-6 |
-| TankUllage | 0.05 | - | none | AC-01 | A-6 |
-| TankInsulation | 0.08 | m | none | AC-01 | A-6: wall + MLI thickness |
-| XMainGear | 9.2 | m | Group Stuff/Mass statement.pdf row 5.1 | source |  |
-| MainGearY | 2.2 | m | Group Stuff/Mass statement.pdf row 5.1 (ycg 2.2) | source | Half track |
-| KeelHeight | 0.6 | m | none | AC-01 | A-7: keel above ground, gear statically deflected |
-| MainTyreDia | 0.65 | m | none | AC-01 | A-7 |
-| XNoseGear | 2.0 | m | none | AC-01 | A-7 |
-| NoseTyreDia | 0.45 | m | none | AC-01 | A-7 |
-| MWing | 1210 | kg | Group_14_Report.pdf p7 Table 3 row 1 | source | xcg 8.5 |
-| MFuselage | 1180 | kg | Group_14_Report.pdf p7 Table 3 row 2 | source | xcg 8.2 |
-| MEmpennage | 300 | kg | Group_14_Report.pdf p7 Table 3 row 3 | source | xcg 16.6 |
-| MPropulsion | 2465 | kg | Group_14_Report.pdf p7 Table 3 row 4 | source | xcg range 7.3 to 14.5 |
-| MGear | 150 | kg | Group_14_Report.pdf p7 Table 3 row 5 | source | xcg 9.2 |
-| MEquipment | 315 | kg | Group_14_Report.pdf p7 Table 3 row 6 | source | xcg 7.1 |
+| Parameter | Value | Unit | Note |
+|---|---|---|---|
+| MTOW | 7000 | kg | Maximum take-off mass |
+| PayloadMass | 1380 | kg | Crew + passengers + cargo; C-5 (1250 kg in Table 2 rejected) |
+| PaxMass | 100 | kg | Mass per passenger |
+| PaxCount | 12 | - | Passengers |
+| CrewMass | 160 | kg | Two flight crew |
+| LH2FuelMass | 240 | kg | C-9 (130 kg in the mass statement superseded, as the report says) |
+| XcgStated | 9.32 | m | Stated CG at MTOW, the value the model is checked against |
+| XLH2Tank | 14.5 | m | LH2 tank centroid |
+| WingSpan | 23.96 | m | C-1 (25.36 m on p5 rejected) |
+| WingArea | 73.6 | m^2 | Reference area, trapezoidal planform to the centreline |
+| AspectRatio | 7.8 | - | Check: b^2/S = 7.80 |
+| TaperRatio | 0.5 | - | C-2 (0.6 in initial_sizing.m L28 is stale) |
+| RootChord | 4.096 | m | Source rounds to 4.09 m (Calculations/IATS_Wing_Flap_Parameters.txt L24) |
+| TipChord | 2.048 | m | Source rounds to 2.045 m (Calculations/IATS_Wing_Flap_Parameters.txt L25) |
+| LESweep | 0.0 | deg | Unswept leading edge |
+| Dihedral | -2.0 | deg | Anhedral |
+| RootAerofoil | NACA 4412 | - |  |
+| TipAerofoil | NACA 23012 | - |  |
+| WingIncidence | 1.34 | deg | A-1: fuselage level in cruise |
+| WingRootLEx | 8.5 | m | Unswept LE, so the MAC leading edge is at the same x |
+| FlapInboard | 0.05 | semi-span | Single-slotted flap |
+| FlapOutboard | 0.7 | semi-span |  |
+| FlapChordRatio | 0.3 | - |  |
+| SlatInboard | 0.0 | semi-span |  |
+| SlatOutboard | 0.75 | semi-span |  |
+| SlatChordRatio | 0.15 | - |  |
+| AileronInboard | 0.7 | semi-span |  |
+| AileronOutboard | 0.95 | semi-span |  |
+| AileronChordRatio | 0.2 | - |  |
+| HTArea | 6.7 | m^2 |  |
+| HTSpan | 5.49 | m |  |
+| HTRootChord | 1.81 | m |  |
+| HTTipChord | 0.63 | m |  |
+| HTTipLEOffset | 0.3 | m | Tip LE aft of root LE, as drawn in the team tail figure |
+| VTArea | 13.14 | m^2 |  |
+| VTHeight | 4.59 | m |  |
+| VTRootChord | 4.25 | m |  |
+| VTTipChord | 1.49 | m |  |
+| VTTipLEOffset | 1.5 | m | Fin tip LE aft of root LE |
+| TailAerofoil | NACA 0012 | - | A-2 |
+| VH | 0.26 | - | C-4 (0.40 in tail_sizing.m L14, 0.62 in Project Bank rejected) |
+| VV | 0.06 | - |  |
+| TailArmAssumed | 8.67 | m | Statistical tail arm used by the tail sizing |
+| LiftSlopeWing | 4.5 | /rad | Course-supplied |
+| LiftSlopeTail | 3.0 | /rad | Course-supplied |
+| NPWingBody | 0.25 | MAC | Wing-body neutral point |
+| Downwash | 0.3 | - | d(epsilon)/d(alpha) |
+| NPStated | 0.3713 | MAC |  |
+| CGStated | 0.2699 | MAC |  |
+| SMStated | 0.1015 | MAC |  |
+| FuselageLength | 18.69 | m | C-3 (17.7 m in tail sizing is the concept-summary value) |
+| CabinLength | 7.1 | m |  |
+| SeatBlockLength | 5.75 | m | Length occupied by seats |
+| XPax | 8.0 | m | Passenger centroid; sets the seat rows |
+| XCrew | 1.5 | m |  |
+| FuselageWidth | 2.2 | m | A-3 |
+| FuselageDepth | 2.4 | m | A-3 |
+| NoseLength | 3.0 | m | A-3: nose tip to start of constant section |
+| TailConeStart | 10.7 | m | A-3: underside starts to rise |
+| TailKinkX | 15.6 | m | A-3: gentle upsweep ends, steep upsweep begins |
+| TailKinkBottom | 0.47 | m | A-3: underside height at the kink |
+| TailKinkWidth | 1.8 | m | A-3 |
+| TailEndBottom | 2.03 | m | A-3: underside height at the tail end |
+| NoseTipZ | 0.58 | m | A-3 |
+| CabinStartX | 4.4 | m | A-4 |
+| PropDiameter | 3.0 | m |  |
+| PropBlades | 5 | - | Tractor, wing-mounted |
+| PropRPM | 1400 | rpm |  |
+| BladeTwist02 | 38 | deg | Blade angle at 0.2 R |
+| BladeTwist05 | 24 | deg | at 0.5 R |
+| BladeTwist075 | 17 | deg | at 0.75 R |
+| BladeTwist09 | 11 | deg | at 0.9 R |
+| BladeAerofoils | NACA 4415 / 4412 / 0010 | - | Root / mid / tip |
+| BladeRootChord | 0.22 | m | A-5 |
+| BladeTipChord | 0.1 | m | A-5 |
+| SpinnerRadius | 0.3 | m | A-5 |
+| NacelleRadius | 0.45 | m | A-5 |
+| NacelleDrop | 0.4 | m | A-5: nacelle axis below the local wing chord line |
+| WingChordZ | 2.45 | m | A-3: root chord line height, wing sits on the fuselage crown |
+| NacelleY | 4.5 | m | Nacelle centreline from the aircraft centreline |
+| XMotor | 6.5 | m | EPU centroid |
+| PropPlaneAheadOfMotor | 0.9 | m | A-5 |
+| MotorMass | 412 | kg | C-9 (400 kg + 435 kg inverters in the mass statement superseded) |
+| FuelCellMass | 800 | kg | C-9 (560 kg in the mass statement) |
+| XFuelCell | 8.0 | m | Under the cabin floor (zcg 0.3) |
+| BatteryMass | 567 | kg | C-9 (200 kg in the mass statement) |
+| XBattery | 6.3 | m |  |
+| LH2TankSystemMass | 686 | kg | C-9 |
+| LH2Density | 70.8 | kg/m^3 | A-6 |
+| TankUllage | 0.05 | - | A-6 |
+| TankInsulation | 0.08 | m | A-6: wall + MLI thickness |
+| XMainGear | 9.2 | m |  |
+| MainGearY | 2.2 | m | Half track |
+| KeelHeight | 0.6 | m | A-7: keel above ground, gear statically deflected |
+| MainTyreDia | 0.65 | m | A-7 |
+| XNoseGear | 2.0 | m | A-7 |
+| NoseTyreDia | 0.45 | m | A-7 |
+| MWing | 1210 | kg | xcg 8.5 |
+| MFuselage | 1180 | kg | xcg 8.2 |
+| MEmpennage | 300 | kg | xcg 16.6 |
+| MPropulsion | 2465 | kg | xcg range 7.3 to 14.5 |
+| MGear | 150 | kg | xcg 9.2 |
+| MEquipment | 315 | kg | xcg 7.1 |
 
 ## 3. Conflicts, assumptions and decisions
 
@@ -138,7 +136,7 @@ Each decision is a single row in the master table, so changing one means changin
 | C-8 | Cargo position | Forward of the cabin (report p8 and floorplan Fig 4); 400 kg at x = 12.5 m, aft (mass statement row 7.4 to 7.6) | **Forward cargo bay, 20 kg** | Table 3's payload of 1,380 kg is 12 × 100 kg passengers plus 160 kg crew, which leaves 20 kg. The 400 kg aft luggage in the detailed mass statement belongs to the earlier mass set (see C-9). |
 | C-9 | Propulsion masses | Detailed mass statement: EPUs 400 kg, fuel cells 560 kg, inverters 435 kg, battery 200 kg, LH2 130 kg + tank 480 kg. Report Table 10: EPUs 412 kg (with inverters), fuel cells 800 kg, battery 567 kg, LH2 system 686 kg with 240 kg fuel | **Report Table 10** | The report states (s3.3) that Table 10 supersedes the preliminary mass statement. The positions still come from the mass statement, because Table 10 gives none. |
 | C-11 | Main gear station | One landing gear row in the mass statement (row 5.1): 150 kg at x = 9.2 m, y = 2.2 m, labelled "Tyres & Struts", and the same 9.2 m in report Table 3. No separate nose gear row anywhere | **Main gear at 9.2 m, the team's value (as built)** | Read as the main gear station, the stated CG (9.32 m) is 0.12 m aft of the main wheels, so the aircraft would sit on its tail. Read as the centroid of all the gear, with a 20 kg nose gear at 2.0 m, the main gear would be at (150 x 9.2 - 20 x 2.0) / 130 = 10.3 m, which gives a normal tip-back angle. Kept at the team's value so the model checks the team design rather than fixing it; the tip-back check therefore fails (section 6). Moving it is one parameter (XMainGear). |
-| C-10 | Rear cargo access | The AC-01 prompt asked for one | **Not modelled** | No team source shows a rear door, and the LH2 tank occupies the tail cone from 13.2 to 15.8 m. A rear ramp is incompatible with that tank position. |
+| C-10 | Rear cargo access | Considered for the model | **Not modelled** | No team source shows a rear door, and the LH2 tank occupies the tail cone from 13.2 to 15.8 m. A rear ramp is incompatible with that tank position. |
 
 ## Values the team work never defined
 
