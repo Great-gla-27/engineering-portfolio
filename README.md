@@ -1,7 +1,5 @@
 # Engineering portfolio
 
-Great Olu-Osagie, BEng Aeronautical Engineering, University of Glasgow.
-
 Five design and analysis projects, modelled in Autodesk Fusion and checked by independent methods: hand calculation against finite element analysis, CAD geometry against the numbers it was built from, mechanism motion against closed-form kinematics. Each project states its limitations, and several report where a design does not work.
 
 Every project folder holds its Fusion source file (`.f3d`), a README with the key results, and the design notes and decision log.
